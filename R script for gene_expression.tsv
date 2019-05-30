@@ -1,0 +1,12 @@
+download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/week10_files/gene_expression.tsv",destfile = "gene_expression.tsv")
+a<-read.table("gene_expression.tsv",header=T,row.names=1)
+a
+a<-as.data.frame(a)
+a$Mean_<-rowMeans(a)
+a
+x<-a[order(-a$Mean_),]
+head(x,10)
+which(a[,3]<10)
+dim((a[which(a[,3]<10),]))
+pairs(a)
+a
