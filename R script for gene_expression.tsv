@@ -1,12 +1,26 @@
+#download file 
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/week10_files/gene_expression.tsv",destfile = "gene_expression.tsv")
-a<-read.table("gene_expression.tsv",header=T,row.names=1)
-a
-a<-as.data.frame(a)
-a$Mean_<-rowMeans(a)
-a
-x<-a[order(-a$Mean_),]
-head(x,10)
-which(a[,3]<10)
-dim((a[which(a[,3]<10),]))
-pairs(a)
-a
+
+#read the file and make gene accession number the row names under gene_ex_data
+gene_ex_data <- read.table("gene_expression.tsv",header=T,row.names=1)
+gene_ex_data
+
+#Calculate row means and add Mean_ column
+gene_ex_data$Mean_<-rowMeans(gene_ex_data)
+gene_ex_data
+
+#Arrange table on descending order based on the value of Mean_
+ordered_data <- gene_ex_data[order(-gene_ex_data$Mean_),]
+ordered_data
+
+#select first 10 values from ordered_data
+head(ordered_data,10)
+
+#select 3rd column (Mean_) with less than 10 value
+which(gene_ex_data[,3]<10)
+
+#Count number of rows having Mean_ less than 10
+nrow((gene_ex_data[which(gene_ex_data[,3]<10),]))
+
+#Create pair plot
+pairs(gene_ex_data)
