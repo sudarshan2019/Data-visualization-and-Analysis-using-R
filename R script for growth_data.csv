@@ -1,23 +1,36 @@
+#Command to download file
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/week10_files/growth_data.csv" , destfile = "growth_data.csv")
-S<-read.csv("https://github.com/markziemann/SLE712_files/raw/master/week10_files/growth_data.csv")
-S
-mean_northeast_start<-mean(as.matrix(S[1:50,3]))
+
+#create a data frame
+growth_data <- read.csv("growth_data.csv")
+growth_data
+#Get mean of northeast site for start of study year 1999 from 50 rows and 3rd column
+mean_northeast_start<-mean(as.matrix(growth_data[1:50,3]))
 mean_northeast_start
-sd_northeast_start<-sd(as.matrix(S[1:50,3]))
+#Get standard deviation of northeast site for start of study year 1999 from 50 rows and 3rd column
+sd_northeast_start<-sd(as.matrix(growth_data[1:50,3]))
 sd_northeast_start
-mean_northeast_end<-mean(as.matrix(S[1:50,6]))
+#Get mean of northeast site for end of study year 2019 from 50 rows and 6th column
+mean_northeast_end<-mean(as.matrix(growth_data[1:50,6]))
 mean_northeast_end
-sd_northeast_end<-sd(as.matrix(S[1:50,6]))
+#Get standard deviation of northeast site for end of study year 2019 from 50 rows and 6th column
+sd_northeast_end<-sd(as.matrix(growth_data[1:50,6]))
 sd_northeast_end
-mean_southwest_start<-mean(as.matrix(S[51:100,3]))
+#Get mean of southwest site for start of study year 1999 from 50 rows and 3rd column
+mean_southwest_start<-mean(as.matrix(growth_data[51:100,3]))
 mean_southwest_start
-sd_southwest_start<-sd(as.matrix(S[51:100,3]))
+#Get standard deviation of southwest site for start of study year 1999 from 50 rows and 3rd column
+sd_southwest_start<-sd(as.matrix(growth_data[51:100,3]))
 sd_southwest_start
-mean_southwest_end<-mean(as.matrix(S[51:100,6]))
+#Get mean of southwest site for end of study year 2019 from 50 rows and 6th column
+mean_southwest_end<-mean(as.matrix(growth_data[51:100,6]))
 mean_southwest_end
-sd_southwest_end<-sd(as.matrix(S[51:100,6]))
+#Get standard deviation of southwest site for end of study year 2019 from 50 rows and 6th column
+sd_southwest_end<-sd(as.matrix(growth_data[51:100,6]))
 sd_southwest_end
-boxplot(S$Circumf_1999_cm[1:50],ylab="northeast_start")
-boxplot(S$Circumf_2019_cm[1:50],ylab="northeast_end")
-boxplot(S$Circumf_1999_cm[51:100],ylab="southwest_start")
-boxplot(S$Circumf_2019_cm[51:100],ylab="southwest_end")
+#Creating box plot
+boxplot(growth_data$Circumf_1999_cm[1:50],ylab="Tree Circumference(in cm)", xlab="northeast_1999", main="Tree Circumference at Northeast site at the start of study year(1999)")
+boxplot(growth_data$Circumf_2019_cm[1:50],ylab="Tree Circumference(in cm)", xlab="northeast_2019", main="Tree Circumference at Northeast site at the end of study year(2019)")
+boxplot(growth_data$Circumf_1999_cm[51:100],ylab="Tree Circumference(in cm)", xlab="southwest_1999", main="Tree Circumference at Southwest site at the start of study year(1999)")
+boxplot(growth_data$Circumf_2019_cm[51:100],ylab="Tree Circumference(in cm)", xlab="southwest_2019", main="Tree Circumference at Southwest site at the end of study year(2019)")
+
